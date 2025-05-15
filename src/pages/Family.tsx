@@ -22,6 +22,12 @@ const Family = () => {
       relation: "Sister",
       description: "My wonderful sister and closest companion in all adventures.",
       image: "/placeholder.svg"
+    },
+    {
+      name: "Maui",
+      relation: "Pet",
+      description: "My adorable feline friend who brings joy and comfort to our family with playful antics and loving purrs.",
+      image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&q=80"
     }
   ];
 
@@ -57,7 +63,7 @@ const Family = () => {
         />
         
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -75,7 +81,7 @@ const Family = () => {
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-5 z-20">
                     <h3 className="text-white text-xl font-semibold">{member.name}</h3>
-                    <p className="text-pink-200 font-medium">{member.relation}</p>
+                    <p className={`font-medium ${member.relation === 'Pet' ? 'text-pink-300' : 'text-pink-200'}`}>{member.relation}</p>
                   </div>
                 </div>
                 <CardContent className="p-5">
