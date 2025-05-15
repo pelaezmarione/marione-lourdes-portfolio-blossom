@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const Family = () => {
   const familyMembers = [
@@ -9,19 +10,19 @@ const Family = () => {
       name: "Omar R. Pelaez",
       relation: "Father",
       description: "Supportive and hardworking father who has always encouraged my creative pursuits.",
-      image: "/placeholder.svg"
+      image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&q=80"
     },
     {
       name: "Rhea Amor P. Pelaez",
       relation: "Mother",
       description: "Loving mother who taught me the joy of cooking and baking from a young age.",
-      image: "/placeholder.svg"
+      image: "https://images.unsplash.com/photo-1517022812141-23620dba5c23?auto=format&fit=crop&q=80"
     },
     {
       name: "Lieve Rhemar P. Pelaez",
       relation: "Sister",
       description: "My wonderful sister and closest companion in all adventures.",
-      image: "/placeholder.svg"
+      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80"
     },
     {
       name: "Maui",
@@ -100,7 +101,17 @@ const Family = () => {
           className="mt-16 bg-gradient-to-r from-pink-50 to-pink-100 p-8 rounded-2xl shadow-sm"
         >
           <div className="max-w-3xl mx-auto">
-            <h3 className="text-2xl font-semibold text-pink-700 mb-4">Family Values</h3>
+            <div className="flex items-center justify-center mb-6">
+              <div className="relative flex -space-x-4">
+                {familyMembers.map((member, index) => (
+                  <Avatar key={index} className="w-14 h-14 border-4 border-pink-50">
+                    <AvatarImage src={member.image} alt={member.name} />
+                    <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                ))}
+              </div>
+            </div>
+            <h3 className="text-2xl font-semibold text-pink-700 mb-4 text-center">Family Values</h3>
             <p className="text-gray-700 leading-relaxed">
               My family has always emphasized the importance of creativity, hard work, and pursuing one's passions. 
               Growing up in a nurturing environment has shaped me into the person I am today. The support from my 
