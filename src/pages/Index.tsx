@@ -1,12 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Navigation from '@/components/Navigation';
+import Home from '@/pages/Home';
+import Family from '@/pages/Family';
+import Experience from '@/pages/Experience';
+import Interests from '@/pages/Interests';
 
 const Index = () => {
+  const location = useLocation();
+  
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-white">
+      <Navigation />
+      
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/family" element={<Family />} />
+        <Route path="/experience" element={<Experience />} />
+        <Route path="/interests" element={<Interests />} />
+      </Routes>
     </div>
   );
 };
