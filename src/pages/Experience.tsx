@@ -1,35 +1,51 @@
-
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Cake, Star } from "lucide-react";
+import { Cake, Star, Maximize2, X } from "lucide-react";
+import { useState } from "react";
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogClose 
+} from "@/components/ui/dialog";
 
 const Experience = () => {
+  // State for image dialog
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
+  // Function to handle image click
+  const handleImageClick = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+    setIsDialogOpen(true);
+  };
+
   // Sample cake gallery
   const cakeGallery = [
-    { id: 1, title: "Birthday Cake", image: "/placeholder.svg" },
-    { id: 2, title: "Wedding Cake", image: "/placeholder.svg" },
-    { id: 3, title: "Celebration Cake", image: "/placeholder.svg" },
-    { id: 4, title: "Specialty Cake", image: "/placeholder.svg" },
-    { id: 5, title: "Cupcakes", image: "/placeholder.svg" },
-    { id: 6, title: "Custom Design", image: "/placeholder.svg" },
+    { id: 1, title: "Anniversary Cake", image: "/images/anniversarycakes.jpg" },
+    { id: 2, title: "Wedding Cake", image: "/images/weddingcake.jpg" },
+    { id: 3, title: "Season Special", image: "/images/val25.jpg" },
+    { id: 4, title: "Cupcake Bouquet", image: "/images/cupsinabox.jpg" },
+    { id: 5, title: "Cupcakes", image: "/images/cupcakes.jpg" },
+    { id: 6, title: "Custom Design", image: "/images/set3.jpg" },
+    { id: 7, title: "Vintage Cake", image: "/images/vintagecake.jpg" },
   ];
 
   // Customer testimonials
   const testimonials = [
     {
-      name: "Maria Santos",
-      message: "The cake Marione made for my daughter's birthday was absolutely beautiful and delicious!",
+      name: "Jaehyun Jeong",
+      message: "The cake Marione made for my birthday was absolutely beautiful and delicious!",
       rating: 5,
     },
     {
-      name: "John Diaz",
+      name: "Kyla Tagun",
       message: "Exceptional talent for cake decoration. Will definitely order again for special occasions.",
       rating: 5,
     },
     {
-      name: "Sarah Lee",
+      name: "Michael Moralda",
       message: "Not only was the cake stunning visually, but the taste exceeded our expectations. Highly recommend!",
       rating: 5,
     }
@@ -176,7 +192,10 @@ const Experience = () => {
             >
               {cakeGallery.map((cake) => (
                 <motion.div key={cake.id} variants={itemVariants}>
-                  <Card className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow border-pink-100">
+                  <Card 
+                    className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow border-pink-100"
+                    onClick={() => handleImageClick(cake.image)}
+                  >
                     <div className="relative h-64">
                       <div className="absolute inset-0 bg-gradient-to-t from-pink-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
                       <img 
@@ -187,6 +206,11 @@ const Experience = () => {
                       <div className="absolute bottom-0 left-0 right-0 p-4 z-20 translate-y-full group-hover:translate-y-0 transition-transform">
                         <h3 className="text-white text-lg font-medium">{cake.title}</h3>
                       </div>
+                      <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity z-20">
+                        <div className="bg-white/80 p-1.5 rounded-full">
+                          <Maximize2 className="w-4 h-4 text-pink-700" />
+                        </div>
+                      </div>
                     </div>
                   </Card>
                 </motion.div>
@@ -194,6 +218,27 @@ const Experience = () => {
             </motion.div>
           </TabsContent>
         </Tabs>
+        
+        {/* Dialog for enlarged image view */}
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogContent className="sm:max-w-4xl p-1 bg-white/95 border-pink-100">
+            <div className="relative w-full h-full">
+              {selectedImage && (
+                <div className="relative max-h-[80vh] overflow-hidden flex items-center justify-center">
+                  <img 
+                    src={selectedImage} 
+                    alt="Enlarged cake" 
+                    className="max-w-full max-h-[80vh] object-contain"
+                  />
+                  <DialogClose className="absolute top-2 right-2 bg-white/80 p-1.5 rounded-full hover:bg-white">
+                    <X className="w-5 h-5 text-pink-700" />
+                    <span className="sr-only">Close</span>
+                  </DialogClose>
+                </div>
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );
