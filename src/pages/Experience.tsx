@@ -1,13 +1,13 @@
+
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Cake, Star, Maximize2, X } from "lucide-react";
+import { Cake, Star, Maximize2 } from "lucide-react";
 import { useState } from "react";
 import { 
   Dialog, 
-  DialogContent, 
-  DialogClose 
+  DialogContent
 } from "@/components/ui/dialog";
 
 const Experience = () => {
@@ -94,35 +94,35 @@ const Experience = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <Card className="h-full shadow-md hover:shadow-lg transition-shadow border-pink-100">
+                  <Card className="h-full shadow-md hover:shadow-lg transition-shadow border-[#ffb3c6]">
                     <CardContent className="p-6">
-                      <div className="flex items-center justify-center w-16 h-16 mx-auto mb-5 rounded-full bg-pink-100">
-                        <Cake className="w-8 h-8 text-pink-600" />
+                      <div className="flex items-center justify-center w-16 h-16 mx-auto mb-5 rounded-full bg-[#ffe5ec]">
+                        <Cake className="w-8 h-8 text-[#fb6f92]" />
                       </div>
                       
-                      <h3 className="text-xl font-semibold text-pink-700 text-center mb-4">
+                      <h3 className="text-xl font-semibold text-[#fb6f92] text-center mb-4">
                         Homebaker & Cake Decorator
                       </h3>
                       
-                      <div className="flex justify-center items-center mb-6 text-pink-500">
+                      <div className="flex justify-center items-center mb-6 text-[#ff8fab]">
                         <p className="font-medium">2022 - Present</p>
                       </div>
                       
                       <ul className="space-y-3">
                         <li className="flex items-start">
-                          <span className="mr-2 text-pink-500">•</span>
+                          <span className="mr-2 text-[#ff8fab]">•</span>
                           <span>Creating custom cakes for special occasions</span>
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-2 text-pink-500">•</span>
+                          <span className="mr-2 text-[#ff8fab]">•</span>
                           <span>Developing unique flavor combinations</span>
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-2 text-pink-500">•</span>
+                          <span className="mr-2 text-[#ff8fab]">•</span>
                           <span>Mastering various decoration techniques</span>
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-2 text-pink-500">•</span>
+                          <span className="mr-2 text-[#ff8fab]">•</span>
                           <span>Managing a small home-based business</span>
                         </li>
                       </ul>
@@ -136,9 +136,9 @@ const Experience = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl p-6 mb-8"
+                  className="bg-gradient-to-br from-[#ffe5ec] to-[#ffb3c6] rounded-2xl p-6 mb-8"
                 >
-                  <h3 className="text-xl font-semibold text-pink-700 mb-4">My Baking Journey</h3>
+                  <h3 className="text-xl font-semibold text-[#fb6f92] mb-4">My Baking Journey</h3>
                   <p className="text-gray-700 leading-relaxed">
                     I began my journey as a homebaker in 2022, fueled by a passion for creating beautiful and 
                     delicious treats. What started as a hobby quickly evolved into a small business as friends 
@@ -160,19 +160,19 @@ const Experience = () => {
                   initial="hidden"
                   animate="visible"
                 >
-                  <h3 className="text-xl font-semibold text-pink-700 mb-4">Customer Testimonials</h3>
+                  <h3 className="text-xl font-semibold text-[#fb6f92] mb-4">Customer Testimonials</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {testimonials.map((testimonial, index) => (
                       <motion.div key={index} variants={itemVariants}>
-                        <Card className="h-full shadow-sm hover:shadow-md transition-shadow border-pink-100">
+                        <Card className="h-full shadow-sm hover:shadow-md transition-shadow border-[#ffb3c6]">
                           <CardContent className="p-5">
                             <div className="flex mb-2">
                               {[...Array(testimonial.rating)].map((_, i) => (
-                                <Star key={i} className="w-4 h-4 text-pink-500 fill-pink-500" />
+                                <Star key={i} className="w-4 h-4 text-[#ff8fab] fill-[#ff8fab]" />
                               ))}
                             </div>
                             <p className="text-gray-600 italic text-sm mb-3">"{testimonial.message}"</p>
-                            <p className="text-sm font-medium text-pink-700">- {testimonial.name}</p>
+                            <p className="text-sm font-medium text-[#fb6f92]">- {testimonial.name}</p>
                           </CardContent>
                         </Card>
                       </motion.div>
@@ -193,11 +193,11 @@ const Experience = () => {
               {cakeGallery.map((cake) => (
                 <motion.div key={cake.id} variants={itemVariants}>
                   <Card 
-                    className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow border-pink-100"
+                    className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow border-[#ffb3c6]"
                     onClick={() => handleImageClick(cake.image)}
                   >
                     <div className="relative h-64">
-                      <div className="absolute inset-0 bg-gradient-to-t from-pink-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#fb6f92]/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
                       <img 
                         src={cake.image} 
                         alt={cake.title}
@@ -208,7 +208,7 @@ const Experience = () => {
                       </div>
                       <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity z-20">
                         <div className="bg-white/80 p-1.5 rounded-full">
-                          <Maximize2 className="w-4 h-4 text-pink-700" />
+                          <Maximize2 className="w-4 h-4 text-[#fb6f92]" />
                         </div>
                       </div>
                     </div>
@@ -219,9 +219,9 @@ const Experience = () => {
           </TabsContent>
         </Tabs>
         
-        {/* Dialog for enlarged image view */}
+        {/* Dialog for enlarged image view - Removed the duplicate close button */}
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogContent className="sm:max-w-4xl p-1 bg-white/95 border-pink-100">
+          <DialogContent className="sm:max-w-4xl p-1 bg-white/95 border-[#ffb3c6]">
             <div className="relative w-full h-full">
               {selectedImage && (
                 <div className="relative max-h-[80vh] overflow-hidden flex items-center justify-center">
@@ -230,10 +230,6 @@ const Experience = () => {
                     alt="Enlarged cake" 
                     className="max-w-full max-h-[80vh] object-contain"
                   />
-                  <DialogClose className="absolute top-2 right-2 bg-white/80 p-1.5 rounded-full hover:bg-white">
-                    <X className="w-5 h-5 text-pink-700" />
-                    <span className="sr-only">Close</span>
-                  </DialogClose>
                 </div>
               )}
             </div>

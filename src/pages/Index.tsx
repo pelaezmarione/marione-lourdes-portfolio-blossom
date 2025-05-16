@@ -16,7 +16,7 @@ const Index = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#fff9f5]">
       <Navigation />
       
       <Routes>

@@ -1,11 +1,10 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Camera, Mountain, Cake } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const Interests = () => {
   // State for photo gallery dialog
@@ -28,7 +27,7 @@ const Interests = () => {
       title: "Photography",
       icon: <Camera className="w-6 h-6" />,
       description: "Capturing beautiful moments through my lens, especially nature and portraits.",
-      color: "bg-pink-400",
+      color: "bg-[#ff8fab]",
       image: "/placeholder.svg",
       onClick: () => setShowPhotoGallery(true)
     },
@@ -36,14 +35,14 @@ const Interests = () => {
       title: "Hiking",
       icon: <Mountain className="w-6 h-6" />,
       description: "Exploring nature and enjoying the peace and beauty of outdoor trails.",
-      color: "bg-pink-500",
+      color: "bg-[#ff8fab]",
       image: "/placeholder.svg"
     },
     {
       title: "Baking",
       icon: <Cake className="w-6 h-6" />,
       description: "Creating delicious pastries, breads, and desserts for friends and family.",
-      color: "bg-pink-600",
+      color: "bg-[#fb6f92]",
       image: "/placeholder.svg"
     }
   ];
@@ -77,47 +76,9 @@ const Interests = () => {
           align="center" 
         />
 
-        {/* Carousel for larger screens */}
-        <div className="hidden md:block">
-          <Carousel className="w-full max-w-4xl mx-auto">
-            <CarouselContent>
-              {interests.map((interest, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-2">
-                    <Card 
-                      className={`overflow-hidden border-pink-100 hover:shadow-md transition-shadow h-full ${interest.title === 'Photography' ? 'cursor-pointer' : ''}`}
-                      onClick={interest.onClick}
-                    >
-                      <div className="h-48 relative">
-                        <img 
-                          src={interest.image} 
-                          alt={interest.title} 
-                          className="w-full h-full object-cover"
-                        />
-                        <div className={`absolute top-4 right-4 ${interest.color} text-white p-2 rounded-full`}>
-                          {interest.icon}
-                        </div>
-                      </div>
-                      <CardContent className="p-5">
-                        <h3 className="font-semibold text-lg text-pink-700 mb-2">{interest.title}</h3>
-                        <p className="text-gray-600">{interest.description}</p>
-                        {interest.title === 'Photography' && (
-                          <p className="text-pink-500 font-medium mt-2 text-sm">Click to view gallery →</p>
-                        )}
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-1" />
-            <CarouselNext className="right-1" />
-          </Carousel>
-        </div>
-
-        {/* Grid layout for mobile */}
+        {/* Grid layout for all screen sizes - removed carousel */}
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:hidden mt-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -125,7 +86,7 @@ const Interests = () => {
           {interests.map((interest, index) => (
             <motion.div key={index} variants={itemVariants}>
               <Card 
-                className={`overflow-hidden border-pink-100 hover:shadow-md transition-shadow ${interest.title === 'Photography' ? 'cursor-pointer' : ''}`}
+                className={`overflow-hidden border-[#ffb3c6] hover:shadow-md transition-shadow ${interest.title === 'Photography' ? 'cursor-pointer' : ''}`}
                 onClick={interest.onClick}
               >
                 <div className="h-40 relative">
@@ -139,10 +100,10 @@ const Interests = () => {
                   </div>
                 </div>
                 <CardContent className="p-5">
-                  <h3 className="font-semibold text-lg text-pink-700 mb-2">{interest.title}</h3>
+                  <h3 className="font-semibold text-lg text-[#fb6f92] mb-2">{interest.title}</h3>
                   <p className="text-gray-600">{interest.description}</p>
                   {interest.title === 'Photography' && (
-                    <p className="text-pink-500 font-medium mt-2 text-sm">Click to view gallery →</p>
+                    <p className="text-[#ff8fab] font-medium mt-2 text-sm">Click to view gallery →</p>
                   )}
                 </CardContent>
               </Card>
@@ -156,10 +117,10 @@ const Interests = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-r from-pink-50 to-pink-100 p-8 rounded-2xl shadow-sm"
+          className="mt-16 bg-gradient-to-r from-[#ffe5ec] to-[#ffb3c6] p-8 rounded-2xl shadow-sm"
         >
           <div className="max-w-3xl mx-auto">
-            <h3 className="text-2xl font-semibold text-pink-700 mb-4">Why These Interests Matter</h3>
+            <h3 className="text-2xl font-semibold text-[#fb6f92] mb-4">Why These Interests Matter</h3>
             <p className="text-gray-700 leading-relaxed">
               My diverse range of interests allows me to express my creativity in different ways. Photography 
               helps me see the world through a different lens, while baking satisfies both my creative 
@@ -178,15 +139,11 @@ const Interests = () => {
         </motion.div>
       </div>
 
-      {/* Photo Gallery Dialog */}
+      {/* Photo Gallery Dialog - Removed the duplicate close button */}
       <Dialog open={showPhotoGallery} onOpenChange={setShowPhotoGallery}>
         <DialogContent className="max-w-5xl">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold text-pink-700">My Photography</h2>
-            <DialogClose className="bg-pink-100 hover:bg-pink-200 rounded-full p-1 text-pink-700">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-              <span className="sr-only">Close</span>
-            </DialogClose>
+            <h2 className="text-2xl font-bold text-[#fb6f92]">My Photography</h2>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -207,14 +164,10 @@ const Interests = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Image Preview Dialog */}
+      {/* Image Preview Dialog - Removed the duplicate close button */}
       <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
         <DialogContent className="max-w-3xl p-1 bg-transparent border-none shadow-none">
           <div className="relative">
-            <DialogClose className="absolute top-2 right-2 bg-black/50 rounded-full p-1 text-white hover:bg-black/70">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-              <span className="sr-only">Close</span>
-            </DialogClose>
             {selectedImage && (
               <img 
                 src={selectedImage} 
