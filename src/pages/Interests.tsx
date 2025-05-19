@@ -1,10 +1,9 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Camera, Mountain, Cake } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Interests = () => {
@@ -145,14 +144,12 @@ const Interests = () => {
         </motion.div>
       </div>
 
-      {/* Photo Gallery Dialog - Now with ScrollArea */}
+      {/* Photo Gallery Dialog - Fixed with ScrollArea and DialogTitle */}
       <Dialog open={showPhotoGallery} onOpenChange={setShowPhotoGallery}>
         <DialogContent className="max-w-5xl">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold text-[#fb6f92]">My Photography</h2>
-          </div>
+          <DialogTitle className="text-2xl font-bold text-[#fb6f92]">My Photography</DialogTitle>
           
-          <ScrollArea className="h-[70vh] pr-4">
+          <ScrollArea className="h-[60vh] w-full pr-4 mt-4">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {photoGalleryImages.map((photo) => (
                 <div 
@@ -172,9 +169,10 @@ const Interests = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Image Preview Dialog */}
+      {/* Image Preview Dialog with proper accessibility */}
       <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
         <DialogContent className="max-w-3xl p-1 bg-transparent border-none shadow-none">
+          <DialogTitle className="sr-only">Image Preview</DialogTitle>
           <div className="relative">
             {selectedImage && (
               <img 
