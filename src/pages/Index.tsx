@@ -20,7 +20,7 @@ const Index = () => {
       className="min-h-screen bg-[#fff9f5]"
       style={{
         // ADD YOUR DASHBOARD BACKGROUND IMAGE HERE - Replace 'your-dashboard-background.jpg' with your image path
-        backgroundImage: "url('/images/your-dashboard-background.jpg')",
+        backgroundImage: "url('/images/bgbg.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
