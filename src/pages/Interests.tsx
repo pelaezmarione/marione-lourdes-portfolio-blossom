@@ -10,6 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 const Interests = () => {
   // State for photo gallery dialog
   const [showPhotoGallery, setShowPhotoGallery] = useState(false);
+  const [showBakingGallery, setShowBakingGallery] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   // Photo gallery images
@@ -25,6 +26,18 @@ const Interests = () => {
     { id: 9, title: "Macro", image: "images/g9.JPG"},
     { id: 10, title: "Macro", image: "images/g10.JPG"},
     { id: 11, title: "Macro", image: "images/g11.JPG"},
+  ];
+
+  // Baking gallery images
+  const bakingGalleryImages = [
+    { id: 1, title: "Chocolate Cake", image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=400&fit=crop" },
+    { id: 2, title: "Fresh Bread", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=400&fit=crop" },
+    { id: 3, title: "Cupcakes", image: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400&h=400&fit=crop" },
+    { id: 4, title: "Pastries", image: "https://images.unsplash.com/photo-1555507036-ab794f4662d3?w=400&h=400&fit=crop" },
+    { id: 5, title: "Cookies", image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400&h=400&fit=crop" },
+    { id: 6, title: "Pie", image: "https://images.unsplash.com/photo-1464349153735-7db50ed83c84?w=400&h=400&fit=crop" },
+    { id: 7, title: "Muffins", image: "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=400&h=400&fit=crop" },
+    { id: 8, title: "Donuts", image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=400&fit=crop" },
   ];
 
   // Interest data (removed cooking, arts and crafts, and music)
@@ -49,7 +62,8 @@ const Interests = () => {
       icon: <Cake className="w-6 h-6" />,
       description: "Creating delicious pastries, breads, and desserts for friends and family.",
       color: "bg-[#fb6f92]",
-      image: "/images/mds2025.jpg"
+      image: "/images/mds2025.jpg",
+      onClick: () => setShowBakingGallery(true)
     }
   ];
 
@@ -101,7 +115,7 @@ const Interests = () => {
           {interests.map((interest, index) => (
             <motion.div key={index} variants={itemVariants}>
               <Card 
-                className={`overflow-hidden border-[#ffb3c6] hover:shadow-md transition-shadow ${interest.title === 'Photography' ? 'cursor-pointer' : ''}`}
+                className={`overflow-hidden border-[#ffb3c6] hover:shadow-md transition-shadow ${(interest.title === 'Photography' || interest.title === 'Baking') ? 'cursor-pointer' : ''}`}
                 onClick={interest.onClick}
               >
                 <div className="h-40 relative">
@@ -117,7 +131,7 @@ const Interests = () => {
                 <CardContent className="p-5">
                   <h3 className="font-semibold text-lg text-[#fb6f92] mb-2">{interest.title}</h3>
                   <p className="text-gray-600">{interest.description}</p>
-                  {interest.title === 'Photography' && (
+                  {(interest.title === 'Photography' || interest.title === 'Baking') && (
                     <p className="text-[#ff8fab] font-medium mt-2 text-sm">Click to view gallery →</p>
                   )}
                 </CardContent>
@@ -170,6 +184,34 @@ const Interests = () => {
                   <img 
                     src={photo.image} 
                     alt={photo.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                    <span className="text-white opacity-0 group-hover:opacity-100 font-medium">View</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Baking Gallery Dialog with proper scrollbar */}
+      <Dialog open={showBakingGallery} onOpenChange={setShowBakingGallery}>
+        <DialogContent className="max-w-4xl max-h-[80vh]">
+          <DialogTitle className="text-2xl font-bold text-[#fb6f92] mb-4">My Baking Gallery</DialogTitle>
+          
+          <div className="h-[60vh] overflow-auto border border-gray-200 rounded-lg p-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {bakingGalleryImages.map((baking) => (
+                <div 
+                  key={baking.id}
+                  className="relative aspect-square overflow-hidden rounded-md cursor-pointer hover:opacity-90 transition-opacity group"
+                  onClick={() => setSelectedImage(baking.image)}
+                >
+                  <img 
+                    src={baking.image} 
+                    alt={baking.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
