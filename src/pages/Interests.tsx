@@ -74,7 +74,16 @@ const Interests = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-20 min-h-screen">
+    <div 
+      className="container mx-auto px-4 py-20 min-h-screen"
+      style={{
+        // ADD YOUR BACKGROUND IMAGE HERE - Replace 'your-background-image.jpg' with your image path
+        backgroundImage: "url('/images/your-background-image.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="pt-16">
         <SectionHeading 
           title="Personal Interests" 
@@ -145,41 +154,44 @@ const Interests = () => {
         </motion.div>
       </div>
 
-      {/* Photo Gallery Dialog - Fixed with ScrollArea and DialogTitle */}
+      {/* Photo Gallery Dialog with proper scrollbar */}
       <Dialog open={showPhotoGallery} onOpenChange={setShowPhotoGallery}>
-        <DialogContent className="max-w-5xl">
-          <DialogTitle className="text-2xl font-bold text-[#fb6f92]">My Photography</DialogTitle>
+        <DialogContent className="max-w-4xl max-h-[80vh]">
+          <DialogTitle className="text-2xl font-bold text-[#fb6f92] mb-4">My Photography Gallery</DialogTitle>
           
-          <ScrollArea className="h-[60vh] w-full pr-4 mt-4">
+          <div className="h-[60vh] overflow-auto border border-gray-200 rounded-lg p-4">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {photoGalleryImages.map((photo) => (
                 <div 
                   key={photo.id}
-                  className="relative aspect-square overflow-hidden rounded-md cursor-pointer hover:opacity-90 transition-opacity"
+                  className="relative aspect-square overflow-hidden rounded-md cursor-pointer hover:opacity-90 transition-opacity group"
                   onClick={() => setSelectedImage(photo.image)}
                 >
                   <img 
                     src={photo.image} 
                     alt={photo.title} 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                    <span className="text-white opacity-0 group-hover:opacity-100 font-medium">View</span>
+                  </div>
                 </div>
               ))}
             </div>
-          </ScrollArea>
+          </div>
         </DialogContent>
       </Dialog>
 
       {/* Image Preview Dialog with proper accessibility */}
       <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
-        <DialogContent className="max-w-3xl p-1 bg-transparent border-none shadow-none">
+        <DialogContent className="max-w-4xl p-2 bg-black/90 border-none">
           <DialogTitle className="sr-only">Image Preview</DialogTitle>
           <div className="relative">
             {selectedImage && (
               <img 
                 src={selectedImage} 
                 alt="Enlarged photo" 
-                className="w-full rounded-lg object-contain max-h-[80vh]" 
+                className="w-full rounded-lg object-contain max-h-[85vh]" 
               />
             )}
           </div>

@@ -16,7 +16,17 @@ const Index = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-[#fff9f5]">
+    <div 
+      className="min-h-screen bg-[#fff9f5]"
+      style={{
+        // ADD YOUR DASHBOARD BACKGROUND IMAGE HERE - Replace 'your-dashboard-background.jpg' with your image path
+        backgroundImage: "url('/images/your-dashboard-background.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       <Navigation />
       
       <Routes>
