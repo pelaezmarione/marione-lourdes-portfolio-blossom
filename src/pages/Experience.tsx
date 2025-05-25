@@ -25,27 +25,27 @@ const Experience = () => {
   const cakeGallery = [
     { id: 1, title: "Anniversary Cake", image: "/images/anniversarycakes.jpg" },
     { id: 2, title: "Wedding Cake", image: "/images/weddingcake.jpg" },
-    { id: 3, title: "Season Special", image: "/images/val25.jpg" },
-    { id: 4, title: "Cupcake Bouquet", image: "/images/cupsinabox.jpg" },
+    { id: 3, title: "Season Special", image: "/images/val2025.jpg" },
+    { id: 4, title: "Cupcake Bouquet", image: "/images/cupcakesinabox.jpg" },
     { id: 5, title: "Cupcakes", image: "/images/cupcakes.jpg" },
     { id: 6, title: "Custom Design", image: "/images/set3.jpg" },
-    { id: 7, title: "Vintage Cake", image: "/images/vintagecake.jpg" },
+    { id: 7, title: "Vintage Cake", image: "/images/vinatgecake.jpg" },
   ];
 
   // Customer testimonials
   const testimonials = [
     {
-      name: "Jaehyun Jeong",
+      name: "Jaehyun",
       message: "The cake Marione made for my birthday was absolutely beautiful and delicious!",
       rating: 5,
     },
     {
-      name: "Kyla Tagun",
+      name: "Kyla",
       message: "Exceptional talent for cake decoration. Will definitely order again for special occasions.",
       rating: 5,
     },
     {
-      name: "Michael Moralda",
+      name: "Michael",
       message: "Not only was the cake stunning visually, but the taste exceeded our expectations. Highly recommend!",
       rating: 5,
     }

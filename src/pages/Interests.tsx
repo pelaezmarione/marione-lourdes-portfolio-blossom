@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Camera, Mountain, Cake } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Interests = () => {
   // State for photo gallery dialog
@@ -13,12 +14,30 @@ const Interests = () => {
 
   // Photo gallery images
   const photoGalleryImages = [
-    { id: 1, title: "Nature Shot", image: "https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGhvdG9ncmFwaHl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" },
-    { id: 2, title: "Portrait", image: "https://images.unsplash.com/photo-1605723517503-3cadb5818a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBob3RvZ3JhcGh5fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" },
-    { id: 3, title: "Landscape", image: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGhvdG9ncmFwaHl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" },
-    { id: 4, title: "Macro", image: "https://images.unsplash.com/photo-1648459776975-5c66e65df155?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBob3RvZ3JhcGh5JTIwbWFjcm98ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" },
-    { id: 5, title: "Street", image: "https://images.unsplash.com/photo-1605348863000-033a516c1d11?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHBob3RvZ3JhcGh5fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" },
-    { id: 6, title: "Architecture", image: "https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fHBob3RvZ3JhcGh5fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" }
+    { id: 1, title: "1", image: "images/g1.JPG" },
+    { id: 2, title: "2", image: "images/g2.JPG" },
+    { id: 3, title: "3", image: "images/g3.JPG" },
+    { id: 4, title: "4", image: "images/g4.JPG"},
+    { id: 5, title: "5", image: "images/g5.JPG"},
+    { id: 6, title: "6", image: "images/g6.JPG"},
+    { id: 7, title: "7", image: "images/g7.JPG"},
+    { id: 8, title: "8", image: "images/g8.JPG"},
+    { id: 9, title: "9", image: "images/g9.JPG"},
+    { id: 10, title: "10", image: "images/g10.JPG"},
+    { id: 11, title: "11", image: "images/g11.JPG"},
+    { id: 11, title: "12", image: "images/12.JPG"},
+    { id: 11, title: "13", image: "images/13.JPG"},
+    { id: 11, title: "14", image: "images/14.JPG"},
+    { id: 11, title: "15", image: "images/17.JPG"},
+    { id: 11, title: "16", image: "images/16.JPG"},
+    { id: 11, title: "17", image: "images/18.JPG"},
+    { id: 11, title: "18", image: "images/19.JPG"},
+    { id: 11, title: "19", image: "images/20.JPG"},
+    { id: 11, title: "20", image: "images/21.JPG"},
+    { id: 11, title: "21", image: "images/22.JPG"},
+    { id: 11, title: "22", image: "images/23.JPG"},
+    { id: 11, title: "23", image: "images/24.JPG"},
+    { id: 11, title: "24", image: "images/25.JPG"},
   ];
 
   // Interest data (removed cooking, arts and crafts, and music)
@@ -28,7 +47,7 @@ const Interests = () => {
       icon: <Camera className="w-6 h-6" />,
       description: "Capturing beautiful moments through my lens, especially nature and portraits.",
       color: "bg-[#ff8fab]",
-      image: "/placeholder.svg",
+      image: "/images/photo1.JPG",
       onClick: () => setShowPhotoGallery(true)
     },
     {
@@ -36,14 +55,14 @@ const Interests = () => {
       icon: <Mountain className="w-6 h-6" />,
       description: "Exploring nature and enjoying the peace and beauty of outdoor trails.",
       color: "bg-[#ff8fab]",
-      image: "/placeholder.svg"
+      image: "/images/friendshiking.jpg"
     },
     {
       title: "Baking",
       icon: <Cake className="w-6 h-6" />,
       description: "Creating delicious pastries, breads, and desserts for friends and family.",
       color: "bg-[#fb6f92]",
-      image: "/placeholder.svg"
+      image: "/images/mds2025.jpg"
     }
   ];
 
@@ -68,7 +87,16 @@ const Interests = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-20 min-h-screen">
+    <div 
+      className="container mx-auto px-4 py-20 min-h-screen"
+      style={{
+        // ADD YOUR BACKGROUND IMAGE HERE - Replace 'your-background-image.jpg' with your image path
+        backgroundImage: "url('/images/your-background-image.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="pt-16">
         <SectionHeading 
           title="Personal Interests" 
@@ -139,40 +167,44 @@ const Interests = () => {
         </motion.div>
       </div>
 
-      {/* Photo Gallery Dialog - Removed the duplicate close button */}
+      {/* Photo Gallery Dialog with proper scrollbar */}
       <Dialog open={showPhotoGallery} onOpenChange={setShowPhotoGallery}>
-        <DialogContent className="max-w-5xl">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold text-[#fb6f92]">My Photography</h2>
-          </div>
+        <DialogContent className="max-w-4xl max-h-[80vh]">
+          <DialogTitle className="text-2xl font-bold text-[#fb6f92] mb-4">My Photography Gallery</DialogTitle>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {photoGalleryImages.map((photo) => (
-              <div 
-                key={photo.id}
-                className="relative aspect-square overflow-hidden rounded-md cursor-pointer hover:opacity-90 transition-opacity"
-                onClick={() => setSelectedImage(photo.image)}
-              >
-                <img 
-                  src={photo.image} 
-                  alt={photo.title} 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
+          <div className="h-[60vh] overflow-auto border border-gray-200 rounded-lg p-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {photoGalleryImages.map((photo) => (
+                <div 
+                  key={photo.id}
+                  className="relative aspect-square overflow-hidden rounded-md cursor-pointer hover:opacity-90 transition-opacity group"
+                  onClick={() => setSelectedImage(photo.image)}
+                >
+                  <img 
+                    src={photo.image} 
+                    alt={photo.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                    <span className="text-white opacity-0 group-hover:opacity-100 font-medium">View</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </DialogContent>
       </Dialog>
 
-      {/* Image Preview Dialog - Removed the duplicate close button */}
+      {/* Image Preview Dialog with proper accessibility */}
       <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
-        <DialogContent className="max-w-3xl p-1 bg-transparent border-none shadow-none">
+        <DialogContent className="max-w-4xl p-2 bg-black/90 border-none">
+          <DialogTitle className="sr-only">Image Preview</DialogTitle>
           <div className="relative">
             {selectedImage && (
               <img 
                 src={selectedImage} 
                 alt="Enlarged photo" 
-                className="w-full rounded-lg object-contain max-h-[80vh]" 
+                className="w-full rounded-lg object-contain max-h-[85vh]" 
               />
             )}
           </div>

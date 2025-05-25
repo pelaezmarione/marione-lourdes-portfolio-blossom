@@ -9,26 +9,26 @@ const Family = () => {
     {
       name: "Omar R. Pelaez",
       relation: "Father",
-      description: "Supportive and hardworking father who has always encouraged my creative pursuits.",
-      image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&q=80"
+      description: "Supportive father who has always encouraged my creative pursuits.",
+      image: "/public/papa.jpg"
     },
     {
       name: "Rhea Amor P. Pelaez",
       relation: "Mother",
       description: "Loving mother who taught me the joy of cooking and baking from a young age.",
-      image: "https://images.unsplash.com/photo-1517022812141-23620dba5c23?auto=format&fit=crop&q=80"
+      image: "/public/mama.jpg"
     },
     {
       name: "Lieve Rhemar P. Pelaez",
       relation: "Sister",
       description: "My wonderful sister and closest companion in all adventures.",
-      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80"
+      image: "/public/lieve.jpg"
     },
     {
       name: "Maui",
-      relation: "Pet",
-      description: "My adorable feline friend who brings joy and comfort to our family with playful antics and loving purrs.",
-      image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&q=80"
+      relation: "My Dowter",
+      description: "My little angel baby who brings joy and comfort to our lives.",
+      image: "/public/maui.jpg"
     }
   ];
 
