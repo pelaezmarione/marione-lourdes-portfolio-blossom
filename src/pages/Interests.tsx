@@ -43,14 +43,12 @@ const Interests = () => {
 
   // Baking gallery images
   const bakingGalleryImages = [
-    { id: 1, title: "Chocolate Cake", image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=400&fit=crop" },
-    { id: 2, title: "Fresh Bread", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=400&fit=crop" },
-    { id: 3, title: "Cupcakes", image: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400&h=400&fit=crop" },
-    { id: 4, title: "Pastries", image: "https://images.unsplash.com/photo-1555507036-ab794f4662d3?w=400&h=400&fit=crop" },
-    { id: 5, title: "Cookies", image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400&h=400&fit=crop" },
-    { id: 6, title: "Pie", image: "https://images.unsplash.com/photo-1464349153735-7db50ed83c84?w=400&h=400&fit=crop" },
-    { id: 7, title: "Muffins", image: "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=400&h=400&fit=crop" },
-    { id: 8, title: "Donuts", image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=400&fit=crop" },
+    { id: 1, title: "Chocolate Cake", image: "images/c1.jpg" },
+    { id: 2, title: "Fresh Bread", image: "images/c2.jpg" },
+    { id: 3, title: "Cupcakes", image: "images/c3.jpg" },
+    { id: 4, title: "Pastries", image: "images/c4.jpg" },
+    { id: 5, title: "Cookies", image: "images/c5.jpg" },
+    { id: 6, title: "Pie", image: "images/c6.jpg" },
   ];
 
   // Interest data (removed cooking, arts and crafts, and music)
@@ -184,7 +182,7 @@ const Interests = () => {
       {/* Photo Gallery Dialog with proper scrollbar */}
       <Dialog open={showPhotoGallery} onOpenChange={setShowPhotoGallery}>
         <DialogContent className="max-w-4xl max-h-[80vh]">
-          <DialogTitle className="text-2xl font-bold text-[#fb6f92] mb-4">My Photography Gallery</DialogTitle>
+          <DialogTitle className="text-2xl font-bold text-[#fb6f92] mb-4">Memory Vault</DialogTitle>
           
           <div className="h-[60vh] overflow-auto border border-gray-200 rounded-lg p-4">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -212,7 +210,7 @@ const Interests = () => {
       {/* Baking Gallery Dialog with proper scrollbar */}
       <Dialog open={showBakingGallery} onOpenChange={setShowBakingGallery}>
         <DialogContent className="max-w-4xl max-h-[80vh]">
-          <DialogTitle className="text-2xl font-bold text-[#fb6f92] mb-4">My Baking Gallery</DialogTitle>
+          <DialogTitle className="text-2xl font-bold text-[#fb6f92] mb-4">Baked Goodies Gallery</DialogTitle>
           
           <div className="h-[60vh] overflow-auto border border-gray-200 rounded-lg p-4">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
